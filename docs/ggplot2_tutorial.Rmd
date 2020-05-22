@@ -1,0 +1,50 @@
+---
+title: "Using ggplot2"
+author: "William Murrah"
+date: "5/22/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Getting Started
+
+The `ggplot2` package is a very powerful graphics package created by Hadley Wickham. 
+It is not part of base R, so you will need to install it if you have not already done so.
+
+```{r, eval=FALSE}
+install.packages("ggplot2")
+```
+
+Once it is installed, you can load the package from your R library as follows:
+```{r}
+library(ggplot2)
+```
+
+
+## Overview
+
+`ggplot2` is a graphics package based on *The Grammer of Graphics*, a book by Leland Wilkinson that presents a unique way of producing graphics. 
+Creating plots in `ggplot2` is different the using base graphics, but once you get used to it you will most likely find it very useful. 
+This tutorial is just a basic introduction to the package.
+To find out more visit the package's webpage at https://ggplot2.tidyverse.org/.
+
+
+
+```{r}
+data(mtcars)
+
+mtcars <- within(mtcars, {
+  cyl <- factor(cyl)
+  vs <- factor(vs, labels = c("V-shaped", "straight"))
+  am <- factor(am, labels = c("automatic", "manual"))
+})
+```
+
+```{r}
+ggplot(mtcars, aes(hp, mpg, color = cyl)) + geom_point()
+```
+
+
