@@ -1,7 +1,6 @@
 ---
 title: "TutoR"
 output: html_document
-logo: figures/qmerLogo.png
 ---
 
 ```{r setup, include=FALSE}
