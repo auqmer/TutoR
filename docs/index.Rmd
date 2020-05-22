@@ -1,5 +1,4 @@
 ---
-title: "TutoR"
 output: html_document
 ---
 
