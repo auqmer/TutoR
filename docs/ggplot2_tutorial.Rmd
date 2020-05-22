@@ -1,5 +1,5 @@
 ---
-title: "Using ggplot2"
+title: "Using `ggplot2`"
 author: "William Murrah"
 date: "5/22/2020"
 output: html_document
