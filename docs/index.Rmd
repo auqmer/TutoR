@@ -7,10 +7,16 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 This webpage contains tutorials on using the R statistical programming language.
 
 
 ## Tutorials
 
+### Basic
+
+### Intermediate
+
 * [Using `ggplot2`](https://auqmer.github.io/TutoR/ggplot2_tutorial.html)
+
+
+### Advanced

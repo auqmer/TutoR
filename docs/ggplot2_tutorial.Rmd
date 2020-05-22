@@ -9,6 +9,8 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+[Return to Tutorial Menu](https://auqmer.github.io/TutoR/)
+
 ## Getting Started
 
 The `ggplot2` package is a very powerful graphics package created by Hadley Wickham. 
@@ -23,7 +25,6 @@ Once it is installed, you can load the package from your R library as follows:
 library(ggplot2)
 ```
 
-
 ## Overview
 
 `ggplot2` is a graphics package based on *The Grammer of Graphics*, a book by Leland Wilkinson that presents a unique way of producing graphics. 
@@ -31,6 +32,10 @@ Creating plots in `ggplot2` is different the using base graphics, but once you g
 This tutorial is just a basic introduction to the package.
 To find out more visit the package's webpage at https://ggplot2.tidyverse.org/.
 
+For this tutorial we will use the `mtcars` data, which is part of the base R datasets.
+You can load it with the `data()` function which I do below. 
+I also convert some of the variables to factors. 
+You should also open the help page for the dataset by typing `?mtcars` into the R console.
 
 
 ```{r}
@@ -48,3 +53,5 @@ ggplot(mtcars, aes(hp, mpg, color = cyl)) + geom_point()
 ```
 
 
+
+[Return to Tutorial Menu](https://auqmer.github.io/TutoR/)
