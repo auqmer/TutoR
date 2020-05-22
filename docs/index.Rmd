@@ -9,6 +9,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 This webpage contains tutorials on using the R statistical programming language.
 
+[Link to github page](https://github.com/auqmer/TutoR)
 
 ## Tutorials
 
