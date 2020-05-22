@@ -74,7 +74,6 @@ ggplot(data = mtcars, mapping = aes(x = hp,y =  mpg, color = cyl)) + geom_point(
 
 [1]: https://www.oreilly.com/library/view/programming-skills-for/9780135159071/ "Programming Skills for Data Science"
 
-### References
 
 [Return to Tutorial Menu](https://auqmer.github.io/TutoR/)
 
