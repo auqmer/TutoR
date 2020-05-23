@@ -1,10 +1,6 @@
 ---
-output: html_document
+layout: default
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 This webpage contains tutorials on using the R statistical programming language.
 The tutorials are organized into basic, intermediate and advanced. 
