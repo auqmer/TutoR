@@ -3,7 +3,6 @@ title: Principles of Statistical Programming
 author: "William Murrah"
 output: ioslides_presentation
 ---
-## General Introduction
 
 ## What's the difference between a Statistical Program and a Statistical Programming Language?
 

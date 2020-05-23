@@ -65,11 +65,17 @@ Variables from the data are passed to the mappings argument within the `aes()` f
 The asthetics determine how the variables are used and options include the x and y axis, color, group, and shape.
 Then a geometric is added.
 The parts of a ggplot object can be combined with a plus (`+`).
-Below I create a ggplot object with the mtcars data using mpg on the y axis, hp on the x axis, and color the cars with the same number of cylinders in the same color. Then I add the point geometric to produce a scatterplot.
+
+You can create many types of plots with `ggplot2`, but I will focus on scatterplots in this tutorial, as they are very common and useful for visualizing many statistical models.
+
+Below I create a ggplot object with the mtcars data using mpg on the y axis and hp on the x axis. Then I add the point geometric, `geom_point()` to produce a scatterplot.
 
 ```{r}
-ggplot(data = mtcars, mapping = aes(x = hp,y =  mpg, color = cyl)) + geom_point()
+ggplot(data = mtcars, mapping = aes(x = hp,y =  mpg)) + geom_point()
 ```
+
+The aesthetics map a variable onto a means of displaying values of a variable.
+So, here `aex(x = hp)`  means to map the values of `hp` on the x axis. 
 
 
 [1]: https://www.oreilly.com/library/view/programming-skills-for/9780135159071/ "Programming Skills for Data Science"

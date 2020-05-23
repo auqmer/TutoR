@@ -1,0 +1,135 @@
+---
+title: "Reshaping Data with `tidyr`"
+author: "William Murrah"
+output: html_document
+knit: (function(inputFile, encoding) {
+  rmarkdown::render(inputFile, encoding = encoding, output_dir = "docs") })
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NULL)
+library(psych)
+```
+
+
+[Return to Tutorial Menu](https://auqmer.github.io/TutoR/)
+
+There are multiple ways to represent the same data in a data frame.
+These different ways are needed for different types of analytic procedures, and may vary across software implementations.
+A common example is when dealing with longitudinal data, where you often have the same variable measured at different time points.
+For example, let's say you have measured college students gpa at six time points. This data could be structured so each row represents a student, and there are separate columns for each time point with the measured gpa. 
+This is often referred to as the wide format.
+You could also structure the data so that all the gpa values were in one column, and there was an additional column the contained the six time points. 
+This is often referred to as long format, and in our example, each student would have six rows, one for each time point.
+
+In this tutorial, I will show you how to go from wide to long format using the `tidyr` package. 
+There are other ways to do this in R other than using this package.
+Base R has a function `reshape()` that can be used, but after 10 years of using R I still have to look up how to use it each time I try. 
+There is also a way to do it with the `data.table` package which is useful, particularly if you have a large data frame. 
+But in my opinion, `tidyr` is the easiest to understand, so I will show that here. 
+
+the `tidyr` package is all about making data tidy. 
+Go to https://tidyr.tidyverse.org/ to learn more.
+It is part if the tidyverse, which is a set of popular packages for data science in R.
+You can learn more about the tidyverse here: https://www.tidyverse.org/.
+
+There are four functions in the `tidyr` package most relevant for reshaping data from wide to long or from long to wide.
+They are `gather()`, and its complement `spread()`, as well as `separate()` and its complement `unite()`.
+I will demonstrate the first three here.
+
+I will demonstrate converting data from wide to long using the gpa data from the [Hox, Moerbeek, and van de Schoot 2018)](https://www.routledge.com/Multilevel-Analysis-Techniques-and-Applications-Third-Edition/Hox-Moerbeek-Schoot/p/book/9781138121362) text.
+You can find a description of this data in an appendix to that book or [here](https://multilevel-analysis.sites.uu.nl/datasets/) under "CHAPTER 5-GPA DATA".
+Reading the description will help you understand what I am doing.
+
+
+## Reading the data
+
+You can import the data from the website above, or import the csv version from the TutoR github site, as I do below.
+
+```{r}
+gpadat <- read.csv("../data/gpa.csv")
+```
+After creating a data frame called `gpadat` we can look at its structure.
+
+```{r}
+str(gpadat)
+```
+
+You can see that the data has two variables that are measure at each of six time points, gpa and job, the latter being the student's job status at the time of measurement.
+These are considered time variant variables.
+The other variables are time invariant as where not measure at each time point because they do not vary over the time of the study.
+This data is in wide format.
+We want to get it in long format, so that we would have one variable for gpa and another for job, plus a new variable time that captures the six time points.
+
+## `gather()`
+
+The `gather()` function takes variables represented in multiple columns and gathers them into one column of values and a column of keys to identify which original column they came from.
+For now, lets see how we would use this function if we only had one time varying variable.
+I will remove the job variables from our data to demonstrate this.
+
+```{r}
+gpaonly <- subset(x = gpadat , select = -c(job1, job2, job3, job4, job5, job6))
+
+str(gpaonly)
+```
+
+You can see we only have one variable that varys across time.
+To go from wide to long first gather the columns:
+
+```{r}
+library(tidyr)
+gpaonlylong <- gather(data = gpaonly, key = time, value = gpa, gpa1:gpa6)
+
+headTail(gpaonlylong)
+```
+
+This code creates a column we named in the `key` argument, which we called time, that captures the variable names for each column gathered.
+It also creates a column from the `value` argument, which we named gpa that contains the gpa values from those six columns.
+
+If we only had one time varying variable we could just use the `gather()` and `separate()` functions.
+
+```{r}
+library(tidyr)
+
+gpadatlong <- gather(gpadat, key = key, value = val, gpa1:job6)
+headTail(gpadatlong, 10)
+```
+
+## `separate()`
+
+```{r}
+gpadatlong <- separate(gpadatlong, 
+                       col = key, 
+                       into = c("variable", "time"), 
+                       sep = 3)
+
+headTail(gpadatlong)
+```
+
+## `spread()`
+
+
+```{r}
+gpadatlong <- spread(gpadatlong, key = variable, value = val)
+headTail(gpadatlong, 7)
+```
+
+
+
+## The Tidyverse and the pipe operator (`%>%`)
+
+Below is a code snippet that does all that was just covered using the pipe operator.
+
+```{r}
+gpadatlong <- gpadat %>% 
+  gather(key = key, value = value, gpa1:job6) %>% 
+  separate(col = key, into = c("variable", "time"), sep = 3) %>% 
+  spread(key = variable, value =  value)
+```
+
+
+```{r}
+library(ggplot2)
+ggplot(gpadatlong, aes(x = time, y = jitter(gpa), group = student)) + geom_line(alpha = .4)
+```
+

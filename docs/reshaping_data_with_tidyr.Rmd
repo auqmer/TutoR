@@ -1,0 +1,73 @@
+---
+title: "Reshaping Data with `tidyr`"
+author: "William Murrah"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NULL)
+library(psych)
+```
+
+There are multiple ways to represent the same data in a data frame.
+
+
+I will demonstrate converting data from wide to long using the gpa data from the [Hox, Moerbeek, and van de Schoot 2018)](https://www.routledge.com/Multilevel-Analysis-Techniques-and-Applications-Third-Edition/Hox-Moerbeek-Schoot/p/book/9781138121362) text.
+
+
+
+
+```{r}
+gpadat <- read.csv("data/gpa.csv")
+```
+
+
+```{r}
+str(gpadat)
+```
+
+## `gather()`
+
+
+
+```{r}
+library(tidyr)
+
+gpadatlong <- gather(gpadat, key = key, value = val, gpa1:job6)
+headTail(gpadatlong, 10)
+```
+
+## `separate()`
+
+```{r}
+gpadatlong <- separate(gpadatlong, 
+                       col = key, 
+                       into = c("variable", "time"), 
+                       sep = 3)
+
+headTail(gpadatlong)
+```
+
+## `spread()`
+
+
+```{r}
+gpadatlong <- spread(gpadatlong, key = variable, value = val)
+headTail(gpadatlong, 7)
+```
+
+
+
+## The Tidyverse and the pipe operator (`%>%`)
+
+Below is a code snippet that does all that was just covered using the pipe operator.
+
+```{r}
+gpadatlong <- gpadat %>% 
+  gather(key = key, value = value, gpa1:job6) %>% 
+  separate(col = key, into = c("variable", "time"), sep = 3) %>% 
+  spread(key = variable, value =  value)
+```
+
+
+
