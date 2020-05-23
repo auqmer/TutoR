@@ -9,8 +9,6 @@ Some of the tutorials will have code files and data associated with them which y
 Note that this page is a work in progress. 
 The tutorials below that are blue are active, while those that are black are in the works to be developed.
 
-[Link to github page](https://github.com/auqmer/TutoR)
-
 ## Tutorials
 
 ### Basic
