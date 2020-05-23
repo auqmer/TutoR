@@ -1,7 +1,7 @@
 ---
 title: Principles of Statistical Programming
 author: "William Murrah"
-output: html_document
+output: ioslides_presentation
 ---
 ## General Introduction
 
