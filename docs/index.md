@@ -26,11 +26,12 @@ The tutorials below that are blue are active, while those that are black are in 
 
 * Using R Markdown
 * [Using `ggplot2`](https://auqmer.github.io/TutoR/ggplot2_tutorial.html)
-* Reshaping Data with `tidyr`
+* {Reshaping Data with `tidyr`](https://auqmer.github.io/TutoR/reshaping_data_with_tidyr.html)
 * Using `data.table`
 * Reshaping Data with `data.table`
 * Using `git` and GitHub for Version Control
 
 ### Advanced
 
-
+* Higher-Order Functional Programming
+* 
