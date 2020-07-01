@@ -1,0 +1,117 @@
+---
+title: "Using `ggplot2`"
+author: "William Murrah"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+[Return to Tutorial Menu](https://auqmer.github.io/TutoR/)
+
+## Getting Started
+
+The `ggplot2` package is a very powerful graphics package created by Hadley Wickham. 
+It is not part of base R, so you will need to install it if you have not already done so.
+
+```{r, eval=FALSE}
+install.packages("ggplot2")
+```
+
+Once it is installed, you can load the package from your R library as follows:
+```{r}
+library(ggplot2)
+```
+
+## Overview
+
+`ggplot2` is a graphics package based on *The Grammer of Graphics*, a book by Leland Wilkinson that presents a unique way of producing graphics. 
+Creating plots in `ggplot2` is different than using base graphics, but once you get used to it you will most likely find it very powerful, and with practice you will be able to create just about any graphic display of data you can think of.
+This tutorial is just a basic introduction to the package.
+To find out more visit the package's web page at https://ggplot2.tidyverse.org/, which has a link to a nice ggplot2 cheatsheet.
+
+For this tutorial we will use the `mtcars` data, which is part of the base R datasets.
+You can load it with the `data()` function which I do below. 
+I also convert some of the variables to factors. 
+You should also open the help page for the dataset by typing `?mtcars` into the R console.
+
+
+```{r}
+data(mtcars)
+
+mtcars <- within(mtcars, {
+  cyl <- factor(cyl)
+  vs <- factor(vs, labels = c("V-shaped", "straight"))
+  am <- factor(am, labels = c("automatic", "manual"))
+})
+```
+
+The grammar of graphics is a principled way to combine the components of graphs very similar to the way we use words from the different parts of speech to construct meaningful sentences.
+The basic parts of graphics are ([see Programming Skills for Data Science, Ch. 16][1])
+
+* data
+* aesthetics
+* geometrics
+* position adjustments 
+* scale
+* coordinate system
+* facets
+
+I will not cover all these parts in this tutorial, but will instead cover enough to get you started.
+Generally, you start by using the `ggplot()` function, and passing it a data frame and some aesthetics.
+Not surprisingly the name of the  data frame is passed to the data argument.
+Variables from the data are passed to the mappings argument within the `aes()` function. 
+The aesthetics determine how the variables are used and options include the x and y axis, color, group, and shape.
+Then one or more geometrics is added.
+The parts of a ggplot object can be combined with a plus (`+`).
+
+You can create many types of plots with `ggplot2`, but I will focus on scatterplots in this tutorial, as they are very common and useful for visualizing many statistical models.
+
+Below I create a ggplot object with the mtcars data using mpg on the y axis and hp on the x axis. Then I add the point geometric, `geom_point()` to produce a scatterplot.
+
+```{r}
+ggplot(data = mtcars, mapping = aes(x = hp,y =  mpg)) + geom_point()
+```
+
+The aesthetics map a variable onto a means of displaying values of a variable.
+So, here `aex(x = hp)`  means to map the values of `hp` on the x axis.
+Then the `geom_*` function selects the type of graph. 
+
+This graph suggests that miles per gallon and horsepower have a strong negative relation; cars with greater horsepower tend to get fewer miles per gallon of gas. There is also evidence that this relation is not linear. It appears that there is a stronger negative relation between miles per gallon and horsepower for cars with real good miles per hour (and low horse power), but less negative or flat relation for cars with real low miles per gallon (and high horsepower).
+
+### Adding Dimensions to the Graph
+
+We can add dimensions to the graphs. For example, in addition to the `x` and `y` axes, we can use color or shape to depict categorical variables. 
+Let's say we wanted to also explore the relation of the number of cylinder in the car's engine to horsepower and miles per gallon.
+We could do that by adding a color aesthetic as follows:
+
+```{r}
+ggplot(mtcars, aes(x = hp, y = mpg, color = cyl)) + geom_point()
+```
+This graph suggests strong relations between all three variables. 
+We've already seen that the higher the miles per gallon the lower the horsepower tends to be. 
+Now we can also see that the cars with the highest miles per gallon all have fewer cylinders, while those with the lowest miles per gallon tend to have more cylinders.
+Conversely, the cars with the lowest horsepower tend to have fewer cylinders, while those with the highest horsepower tend to have more cylinders. 
+It also looks like the number of cylinders might help explain the nonlinearity between miles per gallon and horsepower. The graph suggests that the lower the number of cylinders, the stronger the negative relation between miles per gallon and horsepower.
+
+## Adding Dimensions with Faceting
+
+Faceting is another way to add dimensions to a graph. 
+
+```{r}
+ggplot(mtcars, aes(x = hp, y = mpg)) + geom_point() + 
+  facet_grid(~ cyl)
+```
+
+```{r}
+ggplot(mtcars, aes(x = hp, y = mpg, color = cyl)) + geom_point() + 
+  facet_grid(am ~ vs)
+```
+
+
+[1]: https://www.oreilly.com/library/view/programming-skills-for/9780135159071/ "Programming Skills for Data Science"
+
+
+[Return to Tutorial Menu](https://auqmer.github.io/TutoR/)
+

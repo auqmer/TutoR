@@ -1,0 +1,14 @@
+digraph blackbox {
+   rankdir = LR
+  graph [overlap = true, fontsize = 7, layout = neato,
+  splines = true]
+  node [shape = box]
+  edge [color = "black"]
+  
+  input[pos="1,1!"]
+  output[pos="4,1!"]
+  box[pos="2.5,1!", style=filled,color = "white", width=1,height=1, fillcolor=black, fontcolor=white, label = "Black \nBox"]
+  
+  input -> box 
+  box -> output
+}

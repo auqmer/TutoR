@@ -1,0 +1,142 @@
+---
+title: "Elements of Statistical Programming in R"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NULL)
+```
+
+[Return to Tutorial Menu](https://auqmer.github.io/TutoR/)
+
+This tutorial  will introduce you to principles of programming that I hope will help you to understand the logic of statistical programming languages in general, and how they are implemented in R.
+It consists of three sections.
+First, I explain why we need statistical programming.
+Second, I outline the elements of statistical programming
+
+## Why Do We Need Statistical Programming?
+
+### Heading
+
+####  What's the difference between a **Statistical Program** and a **Statistical Programming Language**?
+
+**Statistical Programs** |  **Statistical Programming Languages** |
+-------------------------|----------------------------------------|
+ spreadsheets oriented | object-oriented (many data types)
+ are procedural (like fast food) | are interactive (like fine dining)
+ often limited to developers procedures | allow you to create custom functions
+ are often developed to make getting output easy | require you to know what you are doing
+
+### Advantages of Programming
+
+* Flexibility
+* Transparency
+* Reproducibility
+* Saves you time!!
+
+#### Flexibility
+
+Menu based software is inherently limited. 
+There are only so many procedures that can be put in a menu before it gets unwieldy.
+This often forces researchers to fit their needs into the framework of the software.
+With a statistical programming language, the software is flexible enough that it can be adapted to your needs, and not the other way around.
+
+#### Transparency
+
+Menu based software also make it very difficult to understand what is going on under the hood with many of the procedures.
+The procedures are black boxes.
+Statistical programming languages also use black box abstraction, which is very valuable. 
+
+#### Reproducibility
+
+Menu based software can be useful when you are doing things that you will only do once, and the means of obtaining your results are not important. 
+Neither of those is applicable with most of what we do in statistics: We run our methods multiple times, and how we get our results are critical to the results.
+This is particularly important as there is now a big push to make our research reproducible.
+There are ways to do that with most menu based statistical software, but if you are creating code, it makes sense to reap the full benefit.
+
+## Elements of Programming
+
+### The Elements of Programming
+
+1. **Primitive expressions** - which represent the simplest elements of a language, and include *primitive data* and *primitive functions*.
+2. **Means of combination** - by which compound objects are created from primitive or other expressions
+3. **Means of abstraction** - by which compound objects can be named and manipulated
+
+#### 1. Primitive Expressions
+
+* Represent the simplest entities in a programming language
+* Think of them as the individual Lego blocks
+* Primitive expressions have a few basic *types*
+
+An **expression** is an input that the programming language can evaluate.
+For example, if is enter the number 3 into R, it will evaluate it as a number and return that number.
+
+```{r }
+3
+```
+
+But if I enter something like this:
+
+```{r , eval=FALSE}
+This is an English sentence
+```
+
+```
+Error: unexpected symbol in "This is"
+```
+I get an error message because this is not a valid R expression.
+R does not understand plain English. 
+
+##### Primitive Types of Data Expressions
+
+* **Numeric** -integers (1,2), real number (1.2, -3.1, 200.0), and maybe imaginary numbers
+* **Character** or **String** - "Hello world!", "Ten", 'Cat', "This is a sentence, which is made up of strings", "10" ( in single or double quotes)
+* **Boolean** or **Logical** - TRUE or FALSE (use operators such as *or*, *and* and *not*)
+
+
+#### 2. Combining Expressions
+
+Primitive expressions can be combined:
+
+If you type the following combined *expression*
+
+```
+1 + 2
+```
+R will *evaluate* it and print
+
+```
+[1] 3
+```
+
+##### Binary Operators
+
+##### Functions for Combining Expressions
+
+There are multiple functions in R to combine 
+
+## Functional Abstraction
+
+#### 3. Functions: A Primary Means of Abstraction 
+
+* Functions are used to abstract compound expressions
+* Functions take inputs, process them and result in outputs
+
+![Functions as black box abstraction](../figures/blackbox.jpeg)
+## Data Abstraction
+
+From vectors to lists, matrices and arrays
+
+## Objects and Environments
+
+Include convenience functions such as:
+
+* with
+* within
+* transform
+
+x <- c(red="Huey", blue="Dewey", green="Louie")
+
+y = c(first = 1, second = 2, third = 3)
+y
+

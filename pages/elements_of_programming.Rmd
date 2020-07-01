@@ -42,7 +42,7 @@ This tutorial  will introduce you to principles of programming that I hope will 
 
 * **Numeric** -integers (1,2), real number (1.2, -3.1, 200.0), and maybe imaginary numbers
 * **String** - "Hello world!", "Ten", 'Cat', "This is a sentence, which is made up of strings", "10" ( in single or double quotes)
-* **Boolean** - True or False (use operators such as *or*, *and* and *not*)
+* **Boolean** - TRUE or FALSE (use operators such as *or*, *and* and *not*)
 
 ## 2. Combining Expressions
 
@@ -66,9 +66,5 @@ the programming language will *evaluate* it and print
 * Functions are used to abstract compound expressions
 * Functions take inputs, process them and result in outputs
 
-[insert black box photo]
+![Functions as black box abstraction](../figures/blackbox.jpeg)
 
-
-```R
-
-```
