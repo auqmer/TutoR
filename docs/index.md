@@ -9,18 +9,23 @@ Some of the tutorials will have code files and data associated with them which y
 Note that this page is a work in progress. 
 The tutorials below that are blue are active, while those that are black are in the works to be developed.
 
+### Links:
+
+#### [QMER Home Page](https://aub.ie/qmer)
+
+#### [QMER R User Group Home Page](https://auqmer.github.io/qmer_rug/)
+
 ## Tutorials
 
 ### Basic
 
-* Introduction to R
-* Introduction to RStudio
+* Introduction to R and RStudio
 * Elements of Programming
 * Basic Object Types
 * Assignment and Environments
 * Functions
 * Complex Objects
-* Files, Folders, Paths, and Projects
+* Files, Directories, Paths, and Projects
 
 ### Intermediate
 

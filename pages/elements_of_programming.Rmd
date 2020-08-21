@@ -20,7 +20,7 @@ This tutorial  will introduce you to principles of programming that I hope will 
  often limited to developers procedures | allow you to create custom functions
  are often developed to make getting output easy | require you to know what you are doing
 
-## Advantages of Programming
+### Advantages of Programming
 
 * Flexibility
 * Reproducibility

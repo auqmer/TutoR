@@ -1,0 +1,106 @@
+---
+title: "Using the t-test"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, comment = NULL)
+```
+
+## 7.1 One-sample  means with the *t*-distribtion
+
+
+```{r}
+x <- seq(-4, 4, length.out = 200)
+dnormx <- dnorm(x)
+dtx <- dt(x, 4)
+plot(dnormx ~ x, type = "l", ylab = "")
+lines(x, dtx, lty = 2)
+legend("topright", c("Normal", "t"),lty = c(1,2))
+```
+
+#### Example 7.2
+
+What proportion of the t-distribution with 18 degrees of freedom falls below -2.10?
+
+```{r}
+pt(q = -2.10, df = 18)
+```
+
+
+#### Example 7.3
+
+A t-distribution with 20 degrees of freedom is shown in the left panel of Figure 7.4. Estimate the proportion of the distribution falling above 1.65.
+
+```{r}
+pt(q = 1.65, df = 20, lower.tail = FALSE)
+```
+
+#### Example 7.4
+
+A t-distribution with 2 degrees of freedom is shown in the right panel of Figure 7.4. Estimate the proportion of the distribution falling more than 3 units from the mean (above or below).
+
+```{r}
+pt(3, 2, lower.tail = FALSE) +  pt(-3, 2)
+# or
+pt(3, 2, lower.tail = FALSE)*2
+```
+
+EXAMPLE 7.6
+Are the independence and normality conditions satisfied for this data set?
+
+
+
+The observations are a simple random sample, therefore independence is reasonable. The summary
+statistics in Figure 7.6 do not suggest any clear outliers, since all observations are within 2.5 standard
+deviations of the mean. Based on this evidence, the normality condition seems reasonable.
+In the normal model, we used z? and the standard error to determine the width of a confidence
+interval. We revise the confidence interval formula slightly when using the t-distribution:
+
+
+point estimate $\pm t^*_{df} \times  SE$ →  $\bar{x} \pm t^*_{df} \times \frac{s}{\sqrt{n}}$
+
+EXAMPLE 7.7
+Using the summary statistics in Figure 7.6, compute the standard error for the average mercury
+content in the n = 19 dolphins.
+
+We plug in s and n into the formula: $SE = \frac{s}{\sqrt{n}} = \frac{2.3}{\sqrt{19}} = 0.528$.
+
+```{r}
+xbar <- 4.4
+s <- 2.3
+n <- 19
+SE <- s/sqrt(n)
+SE
+```
+
+## EXAMPLE 7.8
+
+When n = 19, what is the appropriate degrees of freedom? Find $t^*_{df}$ for this degrees of freedom and
+the confidence level of 95%
+
+The degrees of freedom is easy to calculate: df = n − 1 = 18.
+Using statistical software, we find the cutoff where the upper tail is equal to 2.5%: $t^*_{18} = 2.10$. The
+18area below -2.10 will also be equal to 2.5%. That is, 95% of the t-distribution with df = 18 lies
+within 2.10 units of 0.
+
+## EXAMPLE 7.9
+
+Compute and interpret the 95% confidence interval for the average mercury content in Risso’s
+dolphins.
+We can construct the confidence interval as
+x̄ ± t? 18 × SE
+ →
+ 4.4 ± 2.10 × 0.528
+ →
+ (3.29, 5.51)
+
+```{r}
+c <- qt(.975, df = n-1)
+CI.lwr <- xbar - c*SE
+CI.upr <- xbar + c*SE
+cat("Confidence interval for x = (", round(CI.lwr, 2), ", ", round(CI.upr,2), ")", sep = "")
+```
+
+
+ 
