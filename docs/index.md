@@ -26,6 +26,7 @@ The tutorials below that are blue are active, while those that are black are in 
 * Functions
 * Complex Objects
 * Files, Directories, Paths, and Projects
+* [Cleaning Data Basics](https://auqmer.github.io/TutoR/cleaningdata_basics.html)
 
 ### Intermediate
 

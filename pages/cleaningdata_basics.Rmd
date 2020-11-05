@@ -1,0 +1,39 @@
+---
+title: "Basics of Cleaning Data"
+author: "William Murrah"
+date: "11/5/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+
+## Three Frameworks for Cleaning Data
+
+1. **Base R** - R comes with extensive functions for data manipulation. These functions are not always intuitive, and require practice to use well. 
+2. **Tidyverse** - The tidyverse was created to make many aspects of using R more intuitive. But learning the tidyverse to early may lead to a lack of understanding of base R, which is essential to mastery of the language.
+3. **`data.table` package** - This package is excellent for large data file. It is by far the fastest, and envied by other programming languages. However, it follows its own syntax, which is very different from the other to frameworks I mentioned.
+
+## Data Cleaning Resources
+
+### Online Documents and webpages
+
+* R documentation
+    + [An Introduction to R (pdf)](https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf)
+    + [An introduction to data cleaning with R (pdf)](https://cran.r-project.org/doc/contrib/de_Jonge+van_der_Loo-Introduction_to_data_cleaning_with_R.pdf)
+* [Quick-R](https://www.statmethods.net/index.html) - 
+* [Quartz Guide to Bad Data](https://github.com/Quartz/bad-data-guide)
+
+### Online Books
+
+* [R for Data Science](https://r4ds.had.co.nz/)
+
+### Cheatsheets
+
+* [Data Wrangling with `dplyr` and `tidyr`](https://rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf)
+
+
+
